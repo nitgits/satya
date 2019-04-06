@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
+		
+
+<util:list id="list" list-class="java.util.ArrayList" value-type="java.lang.String">
+<value>Apple</value>
+<value>orange</value>
+<value>banana</value>
+<value>mango</value>
+</util:list>
+
+<bean id="sysdate" class="java.util.Date"/>
+<bean id="userdt" class="java.util.Date">
+<property name="year" value="110"/>
+<property name="month" value="04"/>
+<property name="date" value="18"/>
+</bean>
+<bean id="doj" class="java.util.Date" p:year="19" p:month="04" p:date="10" p:minutes="20" p:seconds="10"></bean>
+
+<util:list id="dt" list-class="java.util.LinkedList" value-type="java.util.Date">
+<ref bean="sysdate"/>
+<ref bean="userdt"/>
+<ref bean="doj"/>
+</util:list>
+<util:list id="inte" list-class="java.util.LinkedList" value-type="java.lang.Integer">
+<value>200</value>
+<value>250</value>
+<value>150</value>
+<value>500</value>
+<value>250</value>
+</util:list>
+
+<!-- set collection -->
+<util:set id="st" set-class="java.util.HashSet" value-type="java.lang.String">
+<set>
+<value>Cat</value>
+<value>rat</value>
+<value>bat</value>
+<value>cat</value>
+<value>bat</value>
+</set>
+</util:set>
+
+<util:set id="setdt" set-class="java.util.LinkedHashSet" value-type="java.util.Date">
+<ref bean="sysdate"/>
+<ref bean="userdt"/>
+<ref bean="doj"/>
+</util:set>
+
+<util:map id="mp" map-class="java.util.HashMap" key-type="java.lang.Integer" value-type="java.lang.String">
+<entry>
+<key><value>101</value></key>
+<value>satya</value>
+</entry>
+<entry><key><value>102</value></key>
+<value>sindu</value>
+</entry>
+</util:map>
+
+<util:map id="mp1" map-class="java.util.LinkedHashMap" key-type="java.lang.String" value-type="java.util.Date">
+<entry> <key> <value>current date</value> </key>
+<ref bean="sysdate"/>
+ </entry>
+ <entry key="dateofjoin" value-ref="doj">
+ </entry>
+ <!-- <entry key="dateofbirth" value="12dec">
+ </entry> -->
+</util:map>
+
+<util:properties id="proc" value-type="java.lang.String">
+<prop key="Apple"> Red</prop>
+<prop key="Banana">Yellow</prop>
+<prop key="Mango"><!-- LightYellow --></prop>
+</util:properties>
+
+<!-- <util:properties id="proc2"  location="com/nt/common/info.properties" ignore-resource-not-found="true">
+</util:properties> -->
+
+<util:properties id="proc2"  location="com/nt/commons/info.properties" >
+</util:properties>
+
+<!-- <util:constant id="MPI" static-field="java.lang.Math.PI"/> -->
+<util:constant id="MPI" static-field="java.lang.Math.E"/>
+</beans>
